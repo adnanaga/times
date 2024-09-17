@@ -1,15 +1,15 @@
 /* Declare the font using @font-face */
 @font-face {
   font-family: 'Cheltenham';
-  src: url('/fonts/cheltenham-800.ttf') format('woff2');
+  src: url('/fonts/cheltenham-800.ttf') format('ttf');
   font-weight: 700;
-  font-style: normal;
+  font-style: bold;
 }
 
 /* Define the 300 weight */
 @font-face {
   font-family: 'Cheltenham';
-  src: url('/fonts/cheltenham-300.ttf') format('woff2');
+  src: url('/fonts/cheltenham-300.ttf') format('ttf');
   font-weight: 300;
   font-style: normal;
 }
