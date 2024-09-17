@@ -70,7 +70,7 @@ async function processVideo() {
         setsar=1,
         hue=s=0,
         drawtext=fontfile=/cheltemham-300.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=20:fontsize=12:fontcolor=white:,
-        drawtext=fontfile=/cheltemham-800.ttf.ttf:text='${customText}':x=(w-text_w)/2:y=45:fontsize=24:fontcolor=white:
+        drawtext=fontfile=/cheltemham-800.ttf:text='${customText}':x=(w-text_w)/2:y=45:fontsize=24:fontcolor=white:
       `,      
       '-c:v', 'libx264',
       '-c:a', 'aac',
