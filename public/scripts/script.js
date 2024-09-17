@@ -23,7 +23,7 @@ let inputEntered = false;
 function checkConditions() {
   inputEntered = customTextInput.value.trim() !== '';
   console.log(inputEntered)
-  if (inputEntered) {
+  if (inputEntered && videoFile) {
     console.log("Input entered");
     document.getElementById('process-button').style.display = 'block'; // Show process button
   }
@@ -57,7 +57,8 @@ async function processVideo() {
 
   ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(videoFile));
   // ffmpeg.FS('writeFile', 'Roboto-Regular.ttf', await fetchFile('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/fonts/roboto/Roboto-Regular.ttf'));
-  ffmpeg.FS('writeFile', 'Roboto-Regular.ttf', await fetchFile('https://cdn.jsdelivr.net/gh/FrancesCoronel/nyt-comm/raw/master/fonts/cheltenham/cheltenham-italic-800.ttf'));
+  ffmpeg.FS('writeFile', 'cheltemham-300.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-300.ttf'));
+  ffmpeg.FS('writeFile', 'cheltemham-800.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-800.ttf'));
 
   try {
     await ffmpeg.run(
@@ -68,8 +69,8 @@ async function processVideo() {
         scale=500:500,
         setsar=1,
         hue=s=0,
-        drawtext=fontfile=/Roboto-Regular.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=20:fontsize=12:fontcolor=white:,
-        drawtext=fontfile=/Roboto-Regular.ttf:text='${customText}':x=(w-text_w)/2:y=45:fontsize=24:fontcolor=white:
+        drawtext=fontfile=/cheltemham-30.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=20:fontsize=12:fontcolor=white:,
+        drawtext=fontfile=/cheltemham-800.ttf.ttf:text='${customText}':x=(w-text_w)/2:y=45:fontsize=24:fontcolor=white:
       `,      
       '-c:v', 'libx264',
       '-c:a', 'aac',
