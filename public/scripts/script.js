@@ -27,6 +27,10 @@ function checkConditions() {
     console.log("Input entered");
     document.getElementById('process-button').style.display = 'block'; // Show process button
   }
+
+  else {
+    alert("Please tell us what your interview is about AND upload a video file");
+  }
 }
 
 function handleFileUpload(event) {
@@ -47,7 +51,6 @@ function toggleVideoControls() {
   const shouldShow = inputEntered && videoFile;
   videoContainer.style.display = shouldShow ? 'flex' : 'none';
 }
-  <title>NYTimes Interview Maker</title>
 
 async function processVideo() {
   if (!ffmpeg.isLoaded()) {
