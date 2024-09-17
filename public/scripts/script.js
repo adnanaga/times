@@ -27,10 +27,6 @@ function checkConditions() {
     console.log("Input entered");
     document.getElementById('process-button').style.display = 'block'; // Show process button
   }
-
-  else {
-    alert("Please tell us what your interview is about AND upload a video file");
-  }
 }
 
 function handleFileUpload(event) {
@@ -53,6 +49,9 @@ function toggleVideoControls() {
 }
 
 async function processVideo() {
+
+  if (inputEntered && videoFile) {
+
   if (!ffmpeg.isLoaded()) {
     await ffmpeg.load();
   }
@@ -89,6 +88,10 @@ async function processVideo() {
   } catch (error) {
     console.error("Error during video processing:", error);
   }
+}
+ else {
+  alert("Please select a video and enter what your interview is about.");
+ }
 }
 
 function downloadVideo() {
