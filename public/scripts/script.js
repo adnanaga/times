@@ -35,7 +35,6 @@ function handleFileUpload(event) {
   if (file) {
     videoPlayer.src = URL.createObjectURL(file);
     videoPlayer.load();
-    videoPlayer.play();
     // Change the button text to "Video picked"
     fileButton.textContent = "Video picked";
     // Hide the file input bar
