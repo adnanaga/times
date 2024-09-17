@@ -40,8 +40,9 @@ body {
 }
 
 textarea, select, input {
-  field-sizing: content;
+  width: 20vw;
   font-weight: 300;
+  height: 20px;
 }
 
 #video-container{
