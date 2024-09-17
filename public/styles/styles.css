@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'Cheltenham';
   src: url('/fonts/cheltenham-800.ttf') format('woff2');
-  font-weight: 800;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -21,7 +21,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
   height:80vh;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .hidden {
@@ -36,7 +36,7 @@ body {
   border: none;
   cursor: pointer;
   margin-top: 20px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 textarea, select, input {
