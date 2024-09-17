@@ -45,7 +45,7 @@ function handleFileUpload(event) {
 
 function toggleVideoControls() {
   const shouldShow = inputEntered && videoFile;
-  videoContainer.style.display = shouldShow ? 'block' : 'none';
+  videoContainer.style.display = shouldShow ? 'flex' : 'none';
 }
 
 async function processVideo() {

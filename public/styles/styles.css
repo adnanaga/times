@@ -43,3 +43,7 @@ textarea, select, input {
   field-sizing: content;
   font-weight: 300;
 }
+
+#video-container{
+  flex-direction: column;
+}
