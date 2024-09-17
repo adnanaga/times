@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Video Upload</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <input type="file" id="video-input" accept="video/*" class="hidden ">
+  <label for="video-input" class="button">Select file</label>
+  <input type="text" id="custom-text" placeholder="What is your interview about" class="inputBox ">
+  <button id="process-button" style="display:none;"">Process Video</button>
+  <div id="video-container" style="display:none;">
+    <video id="video-player" style="display:none;" controls width="640"></video>
+
+    <button id="download-button">Download Video</button>
+    <video id="processed-video-player" controls width="640"></video>
+
+  <!-- FFmpeg.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.5/dist/ffmpeg.min.js"></script>
+  <script src="/scripts/script.js"></script>
+</body>
+</html>
