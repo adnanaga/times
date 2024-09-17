@@ -1,7 +1,26 @@
+/* Declare the font using @font-face */
+@font-face {
+  font-family: 'Cheltenham';
+  src: url('/fonts/cheltenham-800.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Define the 300 weight */
+@font-face {
+  font-family: 'Cheltenham';
+  src: url('/fonts/cheltenham-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
 body {
+  font-family: 'Cheltenham', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+  height:80vh;
 }
 
 .hidden {
@@ -15,4 +34,8 @@ body {
   border: none;
   cursor: pointer;
   margin-top: 20px;
+}
+
+textarea, select, input {
+  field-sizing: content;
 }

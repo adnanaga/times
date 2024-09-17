@@ -11,6 +11,7 @@ const downloadButton = document.getElementById('download-button');
 const videoPlayer = document.getElementById('video-player');
 const processedVideoPlayer = document.getElementById('processed-video-player');
 const customTextInput = document.getElementById('custom-text');
+const fileButton = document.getElementById('file-button'); // Reference to the file input button
 
 videoInput.addEventListener('change', handleFileUpload);
 processButton.addEventListener('click', processVideo);
@@ -19,12 +20,10 @@ customTextInput.addEventListener('input', checkConditions);
 
 let inputEntered = false;
 
-
-
 function checkConditions() {
   inputEntered = customTextInput.value.trim() !== '';
   console.log(inputEntered)
-  if(inputEntered) {
+  if (inputEntered) {
     console.log("Input entered");
     document.getElementById('process-button').style.display = 'block'; // Show process button
   }
@@ -37,6 +36,10 @@ function handleFileUpload(event) {
     videoPlayer.src = URL.createObjectURL(file);
     videoPlayer.load();
     videoPlayer.play();
+    // Change the button text to "Video picked"
+    fileButton.textContent = "Video picked";
+    // Hide the file input bar
+    videoInput.style.display = 'none';
   }
   checkConditions();
 }
