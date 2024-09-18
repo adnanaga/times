@@ -15,6 +15,7 @@ const fileButton = document.getElementById('file-button'); // Reference to the f
 const loadingContainer = document.getElementById('loading-container');
 const loadingBar = document.getElementById('loading-bar');
 const loadingText = document.getElementById('loading-text');
+const info = document.getElementById('info');
 
 
 videoInput.addEventListener('change', handleFileUpload);
@@ -26,9 +27,7 @@ let inputEntered = false;
 
 function checkConditions() {
   inputEntered = customTextInput.value.trim() !== '';
-  console.log(inputEntered)
   if (inputEntered && videoFile) {
-    console.log("Input entered");
     document.getElementById('process-button').style.display = 'block'; // Show process button
   }
 }
@@ -60,13 +59,40 @@ async function processVideo() {
     await ffmpeg.load();
   }
 
-  const customText = capitalizeFirstLetter(customTextInput.value);
+  const maxCharsPerLine = 18;
+  let customText = capitalizeFirstLetter(customTextInput.value);
 
+// Function to split text without breaking words
+function splitTextAtWholeWord(text, maxChars) {
+  const lastSpaceIndex = text.slice(0, maxChars).lastIndexOf(' ');
+  const splitIndex = lastSpaceIndex > -1 ? lastSpaceIndex : maxChars;
+  return [text.slice(0, splitIndex), text.slice(splitIndex).trim()];
+}
+
+// Split text if longer than maxCharsPerLine
+let ffmpegCommand;
+if (customText.length > maxCharsPerLine) {
+  let [line1, line2] = splitTextAtWholeWord(customText, maxCharsPerLine);
+
+  // Center-align each line and stack them vertically
+  ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=30:fontcolor=white:,
+  drawtext=fontfile=/cheltemham-300.ttf:text='${line1}':x=(w-text_w)/2:y=115:fontsize=65:fontcolor=white,
+                  drawtext=fontfile=/cheltemham-300.ttf:text='${line2}':x=(w-text_w)/2:y=175:fontsize=65:fontcolor=white`;
+} else {
+  // Single-line text
+  ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=30:fontcolor=white:,
+        drawtext=fontfile=/cheltemham-300.ttf:text='${customText}':x=(w-text_w)/2:y=114:fontsize=65:fontcolor=white:`
+}
+
+console.log(ffmpegCommand);
   ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(videoFile));
   // ffmpeg.FS('writeFile', 'Roboto-Regular.ttf', await fetchFile('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/fonts/roboto/Roboto-Regular.ttf'));
   ffmpeg.FS('writeFile', 'cheltemham-300.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-300.ttf'));
   ffmpeg.FS('writeFile', 'cheltemham-800.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-800.ttf'));
   processButton.style.display = 'none';
+  fileButton.style.display = 'none';
+  info.style.display = 'none';
+  customTextInput.style.display = 'none';
 
 // Show the spinner when the processing starts
 document.getElementById('loading-container').style.display = 'flex';
@@ -88,8 +114,7 @@ ffmpeg.setLogger(({ type, message }) => {
         scale=810:1080,
         setsar=1,
         hue=s=0,
-        drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=24:fontcolor=white:,
-        drawtext=fontfile=/cheltemham-300.ttf:text='${customText}':x=(w-text_w)/2:y=114:fontsize=58:fontcolor=white:
+       ${ffmpegCommand}
       `,
       '-c:v', 'libx264',
       '-crf', '18',  // Higher quality

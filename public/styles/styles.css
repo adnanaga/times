@@ -33,11 +33,14 @@ html,body {
   background: #333;
   font-family: 'Cheltenham', sans-serif;
   color: white;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border: none;
+  border-radius:32px;
   cursor: pointer;
-  margin-top: 20px;
   font-weight: 700;
+  font-size: 1rem;
+  width: 50vw;
+  text-align: center;
 }
 
 textarea, select, input {
@@ -75,4 +78,8 @@ textarea, select, input {
 
 #processed-video-player {
   width: 100%;
+}
+
+.inputBox{
+  text-align: center;
 }
