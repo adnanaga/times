@@ -87,8 +87,8 @@ if (customText.length > maxCharsPerLine) {
 console.log(ffmpegCommand);
   ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(videoFile));
   // ffmpeg.FS('writeFile', 'Roboto-Regular.ttf', await fetchFile('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/fonts/roboto/Roboto-Regular.ttf'));
-  ffmpeg.FS('writeFile', 'cheltemham-300.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-300.ttf'));
-  ffmpeg.FS('writeFile', 'cheltemham-800.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-800.ttf'));
+  ffmpeg.FS('writeFile', 'cheltemham-300.ttf', await fetchFile('https://times-interview.vercel.app/fonts/cheltenham-300.ttf'));
+  ffmpeg.FS('writeFile', 'cheltemham-800.ttf', await fetchFile('https://times-interview.vercel.app/fonts/cheltenham-800.ttf'));
   processButton.style.display = 'none';
   fileButton.style.display = 'none';
   info.style.display = 'none';
