@@ -74,10 +74,12 @@ async function processVideo() {
         hue=s=0,
         drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=30:fontsize=12:fontcolor=white:,
         drawtext=fontfile=/cheltemham-300.ttf:text='${customText}':x=(w-text_w)/2:y=55:fontsize=24:fontcolor=white:
-      `,      
+      `,
       '-c:v', 'libx264',
-      '-c:a', 'aac',
-      'output.mp4'
+      '-crf', '18',  // Higher quality
+      '-preset', 'slow',  // Better compression
+      '-an',  // Remove audio
+      'interview.mp4'
     );
 
     const data = ffmpeg.FS('readFile', 'output.mp4');
