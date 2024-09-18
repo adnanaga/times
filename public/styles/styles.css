@@ -94,6 +94,7 @@ textarea, select, input {
   font-size: 18px;
   width: 80vw;
   border-radius: 5px;
+  padding: 0px;
 }
 
 /* Rotate the arrow when expanded */
@@ -128,4 +129,12 @@ textarea, select, input {
 
 .faq-item h3 {
   margin-bottom: 5px;
+}
+
+.buttonsAndShit{
+  display:flex; 
+  flex-direction: column; 
+  align-items: center; 
+  height: 60vh; 
+  justify-content: space-around;
 }
