@@ -16,11 +16,19 @@
   <input type="text" id="custom-text" placeholder="What is your interview about" class="inputBox ">
 </div>
   <button id="process-button" class="button">Process Video</button>
+          <!-- Add this progress bar -->
+          <div id="loading-container" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loading-text">Processing... it takes a little just chill.</p>
+          </div>
+          <br>
+          <br>
   <div id="video-container" style="display:none;">
     <video id="video-player" style="display:none;" controls width="640"></video>
-
+    <video id="processed-video-player" controls ></video>
+    <br>
+    <br>
     <button id="download-button" class="button">Download Video</button>
-    <video id="processed-video-player" controls width="640"></video>
 
   <!-- FFmpeg.js library -->
   <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.5/dist/ffmpeg.min.js"></script>

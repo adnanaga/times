@@ -12,6 +12,10 @@ const videoPlayer = document.getElementById('video-player');
 const processedVideoPlayer = document.getElementById('processed-video-player');
 const customTextInput = document.getElementById('custom-text');
 const fileButton = document.getElementById('file-button'); // Reference to the file input button
+const loadingContainer = document.getElementById('loading-container');
+const loadingBar = document.getElementById('loading-bar');
+const loadingText = document.getElementById('loading-text');
+
 
 videoInput.addEventListener('change', handleFileUpload);
 processButton.addEventListener('click', processVideo);
@@ -62,18 +66,30 @@ async function processVideo() {
   // ffmpeg.FS('writeFile', 'Roboto-Regular.ttf', await fetchFile('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/fonts/roboto/Roboto-Regular.ttf'));
   ffmpeg.FS('writeFile', 'cheltemham-300.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-300.ttf'));
   ffmpeg.FS('writeFile', 'cheltemham-800.ttf', await fetchFile('https://times-rho.vercel.app/fonts/cheltenham-800.ttf'));
+  processButton.style.display = 'none';
+
+// Show the spinner when the processing starts
+document.getElementById('loading-container').style.display = 'flex';
+
+// Monitor progress using FFmpeg logs
+ffmpeg.setLogger(({ type, message }) => {
+  if (type === 'ffout' && message.includes('FFMPEG_END')) {
+    // Hide the spinner when the FFMPEG_END message is received
+    document.getElementById('loading-container').style.display = 'none';
+    console.log('Processing complete!');
+  }});
 
   try {
     await ffmpeg.run(
       '-i', 'input.mp4',
       '-t', '7',
       '-vf', `
-        crop=w='min(iw,ih)':h='min(iw,ih)',
-        scale=500:500,
+       crop=w='min(iw,ih)*0.75':h='min(iw,ih)',
+        scale=810:1080,
         setsar=1,
         hue=s=0,
-        drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=30:fontsize=12:fontcolor=white:,
-        drawtext=fontfile=/cheltemham-300.ttf:text='${customText}':x=(w-text_w)/2:y=55:fontsize=24:fontcolor=white:
+        drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=24:fontcolor=white:,
+        drawtext=fontfile=/cheltemham-300.ttf:text='${customText}':x=(w-text_w)/2:y=114:fontsize=58:fontcolor=white:
       `,
       '-c:v', 'libx264',
       '-crf', '18',  // Higher quality
@@ -82,7 +98,7 @@ async function processVideo() {
       'interview.mp4'
     );
 
-    const data = ffmpeg.FS('readFile', 'output.mp4');
+    const data = ffmpeg.FS('readFile', 'interview.mp4');
     processedVideoURL = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
 
     processedVideoPlayer.src = processedVideoURL;
