@@ -7,13 +7,17 @@
   <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-  <h1 style="text-align: center;">NYTimes Interview Maker</h1>
+  <div>
+<h1 style="text-align: center;">NYTimes Interview Maker</h1>
+  <div href="adnanaga.com" target="_blank">By Adnan Aga</div>
+</div>
+  
   <input type="file" id="video-input" accept="video/*" class="hidden ">
   <label for="video-input" class="button" id="file-button">Select your cool sexy slow mo video</label>
   <div id="info" style="text-align:center;">Then tell us what your interview is about
     <br>
     <br>
-  <input type="text" id="custom-text" placeholder="Adnan Has A Tummy Ache" class="inputBox ">
+  <input type="text" id="custom-text" placeholder="Something like...Adnan Has A Tummy Ache" class="inputBox ">
 </div>
   <button id="process-button" class="button">Process Video</button>
           <!-- Add this progress bar -->
@@ -29,7 +33,37 @@
     <br>
     <br>
     <button id="download-button" class="button">Download Video</button>
+    </div>
 
+ <!-- FAQ Toggle Button -->
+ <button class="faq-toggle" id="faq-toggle">
+  FAQ <span class="arrow">▼</span>
+</button>
+
+<!-- FAQ Section (Hidden by default, expands smoothly) -->
+<div id="faq-content">
+  <div class="faq-item">
+    <h3>Why?</h3>
+    <p>I really liked the videos the New York Times made and wanted to try and make a tool that could do that same, mostly as an excuse to build a website.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Aren't you afraid you're going to get sued?</h3>
+    <p>Idk maybe</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How long did you spend making this?</h3>
+    <p>An embarrassingly long amount of time. Like so much time. <a href="https://github.com/ffmpegwasm/ffmpeg.wasm" target="_blank">ffmpeg.wasm</a> is so powerful but also so hard to use.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>What's your favorite song at the moment</h3>
+    <p>
+      <a href="https://music.apple.com/us/album/eusexua/1767658574?i=1767658577" target="_blank">Eusexua by FKA Twigs</a> (thanks <a href="http://joshjoshjosh.net" target="_blank">Josh</a>)
+    </p>
+      </div>
+</div>
   <!-- FFmpeg.js library -->
   <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.5/dist/ffmpeg.min.js"></script>
   <script src="/scripts/script.js"></script>

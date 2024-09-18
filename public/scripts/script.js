@@ -77,7 +77,7 @@ if (customText.length > maxCharsPerLine) {
   // Center-align each line and stack them vertically
   ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=30:fontcolor=white:,
   drawtext=fontfile=/cheltemham-300.ttf:text='${line1}':x=(w-text_w)/2:y=115:fontsize=65:fontcolor=white,
-                  drawtext=fontfile=/cheltemham-300.ttf:text='${line2}':x=(w-text_w)/2:y=175:fontsize=65:fontcolor=white`;
+                  drawtext=fontfile=/cheltemham-300.ttf:text='${line2}':x=(w-text_w)/2:y=188:fontsize=65:fontcolor=white`;
 } else {
   // Single-line text
   ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=30:fontcolor=white:,
@@ -117,9 +117,8 @@ ffmpeg.setLogger(({ type, message }) => {
        ${ffmpegCommand}
       `,
       '-c:v', 'libx264',
-      '-crf', '18',  // Higher quality
-      '-preset', 'slow',  // Better compression
-      '-an',  // Remove audio
+      '-preset', 'ultrafast',  // Use faster encoding preset
+      '-crf', '21',  // Slightly lower quality to speed up encoding
       'interview.mp4'
     );
 
@@ -151,3 +150,9 @@ function capitalizeFirstLetter(text) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
     .join(' '); // Join the array back into a single string
 }
+
+document.getElementById('faq-toggle').addEventListener('click', function() {
+  const faqContent = document.getElementById('faq-content');
+  faqContent.classList.toggle('open');
+  this.classList.toggle('open');
+});
