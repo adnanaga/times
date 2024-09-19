@@ -120,7 +120,7 @@ ffmpeg.setLogger(({ type, message }) => {
       `,
       '-c:v', 'libx264',
       '-preset', 'ultrafast',  // Use faster encoding preset
-      '-crf', '21',  // Slightly lower quality to speed up encoding
+      '-crf', '23',  // Slightly lower quality to speed up encoding
       'interview.mp4'
     );
 
