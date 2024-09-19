@@ -121,6 +121,7 @@ ffmpeg.setLogger(({ type, message }) => {
       '-c:v', 'libx264',
       '-preset', 'ultrafast',  // Use faster encoding preset
       '-crf', '23',  // Slightly lower quality to speed up encoding
+      '-an',  // Remove audio
       'interview.mp4'
     );
 
@@ -138,11 +139,33 @@ ffmpeg.setLogger(({ type, message }) => {
  }
 }
 
-function downloadVideo() {
-  const link = document.createElement('a');
-  link.href = processedVideoURL;
-  link.download = 'processed-video.mp4';
-  link.click();
+async function downloadVideo() {
+  // const link = document.createElement('a');
+  // link.href = processedVideoURL;
+  // link.download = 'processed-video.mp4';
+  // link.click();
+
+  const processedVideoURL = 'interview.mp4'; // Your video file URL
+
+  if (navigator.canShare && navigator.canShare({ files: [new File([], '')] })) {
+    try {
+      const response = await fetch(processedVideoURL);
+      const blob = await response.blob();
+      const file = new File([blob], 'interview.mp4', { type: blob.type });
+
+      await navigator.share({
+        files: [file],
+        title: 'NYTimes Interview',
+        text: customTextInput.value,
+      });
+      
+      console.log('Video shared successfully');
+    } catch (error) {
+      console.error('Error sharing the video:', error);
+    }
+  } else {
+    alert('Sharing is not supported in your browser.');
+  }
 }
 
 function capitalizeFirstLetter(text) {
