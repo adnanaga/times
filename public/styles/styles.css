@@ -149,8 +149,13 @@ textarea, select, input {
 }
 
 @media (min-width: 768px) {
+
+  .buttonsAndShit{
+    width: 50vw;
+  }
+
   .timesVideo {
-    width:30%;
+    width:100%;
   }
 
   #bodyCopy {
