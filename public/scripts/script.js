@@ -16,6 +16,7 @@ const loadingContainer = document.getElementById('loading-container');
 const loadingBar = document.getElementById('loading-bar');
 const loadingText = document.getElementById('loading-text');
 const info = document.getElementById('info');
+const bodyCopy = document.getElementById('bodyCopy');
 
 
 videoInput.addEventListener('change', handleFileUpload);
@@ -93,6 +94,7 @@ console.log(ffmpegCommand);
   fileButton.style.display = 'none';
   info.style.display = 'none';
   customTextInput.style.display = 'none';
+  bodyCopy.style.display = 'none';
 
 // Show the spinner when the processing starts
 document.getElementById('loading-container').style.display = 'flex';
@@ -108,7 +110,7 @@ ffmpeg.setLogger(({ type, message }) => {
   try {
     await ffmpeg.run(
       '-i', 'input.mp4',
-      '-t', '7',
+      '-t', '15',
       '-vf', `
        crop=w='min(iw,ih)*0.75':h='min(iw,ih)',
         scale=810:1080,

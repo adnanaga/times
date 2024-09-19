@@ -7,22 +7,44 @@
   <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-  <div>
-  <h1 style="text-align: center; width: 80vw;">NYTimes Interview Maker</h1>
-  <div style="text-align: center; width: 80vw;">
+  <div style="width: 80vw;">
+  <h1 style="text-align: center;">NYTimes Interview Maker</h1>
+  <div style="text-align: center;">
     <a href="https://adnanaga.com" target="_blank" style="text-decoration: none; color: inherit;">By Adnan Aga</a>
   </div>
-</div>
+  <br>
+  </div>
 
 <div class="buttonsAndShit">
+  <div id="bodyCopy">
+  <div style="text-align: left;">Ever seen those moving, slightly intimate looking interview posts from the NYTimes?<br><br>The ones that look like this?</div>
+  <br>
+  <div style="text-align: center;">
+    <video controls style="width: 80vw;";>
+      <source src="/images/interview-example.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <br>
+  <div>I wanted to make my own, but then ended up making a website.</div>
+
+  <h2>Step 1</h2>
+  <div>Ideally here you go and record yourself using your phones slo mo feature in your camera doing something against a grey/white wall. Make small movements.
+    <br>
+    <br>You could also take a video right from the website but I can't do the cool slo mo like they do in that video up top.</div>
+  <h2>Step 2</h2>
+  <div>Let us know what your interview is about by typing it in the input box below.</div>
+  <h2>Step 3</h2>
+  <div>Hit process video and wait!</div>
+</div>
   <input type="file" id="video-input" accept="video/*" class="hidden ">
-  <label for="video-input" class="button" id="file-button">Select your cool sexy slow mo video</label>
+  <label for="video-input" class="button" id="file-button">Click here to upload your video</label>
   <div id="info" style="text-align:center;">Then tell us what your interview is about
     <br>
     <br>
   <input type="text" id="custom-text" placeholder="Something like...Adnan Has A Tummy Ache" class="inputBox ">
 </div>
-  <button id="process-button" class="button">Process Video</button>
+  <button id="process-button" class="button">Click here to process your video</button>
           <!-- Add this progress bar -->
           <div id="loading-container" style="display: none;">
             <div class="spinner"></div>
@@ -31,8 +53,6 @@
   <div id="video-container" style="display:none;">
     <video id="video-player" style="display:none;" controls width="640"></video>
     <video id="processed-video-player" controls ></video>
-    <br>
-    <br>
     <button id="download-button" class="button">Download Video</button>
     </div>
 
@@ -54,8 +74,8 @@
     </p>  </div>
 
   <div class="faq-item">
-    <h3>Aren't you afraid you're going to get sued?</h3>
-    <p>Idk maybe. This was NOT made by The New York Times.</p>
+    <h3>What if someone from The New York Times sees this?</h3>
+    <p>That would be sick.</p>
   </div>
 
   <div class="faq-item">
