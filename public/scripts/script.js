@@ -8,6 +8,7 @@ const videoContainer = document.getElementById('video-container');
 const videoInput = document.getElementById('video-input');
 const processButton = document.getElementById('process-button');
 const downloadButton = document.getElementById('download-button');
+const shareButton = document.getElementById('share-button');
 const videoPlayer = document.getElementById('video-player');
 const processedVideoPlayer = document.getElementById('processed-video-player');
 const customTextInput = document.getElementById('custom-text');
@@ -22,6 +23,7 @@ const bodyCopy = document.getElementById('bodyCopy');
 videoInput.addEventListener('change', handleFileUpload);
 processButton.addEventListener('click', processVideo);
 downloadButton.addEventListener('click', downloadVideo);
+shareButton.addEventListener('click', shareVideo);
 customTextInput.addEventListener('input', checkConditions);
 
 let inputEntered = false;
@@ -120,7 +122,7 @@ ffmpeg.setLogger(({ type, message }) => {
       `,
       '-c:v', 'libx264',
       '-preset', 'ultrafast',  // Use faster encoding preset
-      '-crf', '23',  // Slightly lower quality to speed up encoding
+      '-crf', '27',  // Slightly lower quality to speed up encoding
       '-an',  // Remove audio
       'interview.mp4'
     );
@@ -139,24 +141,22 @@ ffmpeg.setLogger(({ type, message }) => {
  }
 }
 
-async function downloadVideo() {
+async function shareVideo() {
   // const link = document.createElement('a');
   // link.href = processedVideoURL;
   // link.download = 'processed-video.mp4';
   // link.click();
 
-  const processedVideoURL = 'interview.mp4'; // Your video file URL
-
   if (navigator.canShare && navigator.canShare({ files: [new File([], '')] })) {
     try {
       const response = await fetch(processedVideoURL);
       const blob = await response.blob();
-      const file = new File([blob], 'interview.mp4', { type: blob.type });
-
+      const file = new File([blob], 'The-Interview.mp4', { type: blob.type });
+      console.log(file)
       await navigator.share({
         files: [file],
         title: 'NYTimes Interview',
-        text: customTextInput.value,
+        text: `The Interview: ${customTextInput.value}`,
       });
       
       console.log('Video shared successfully');
@@ -166,6 +166,13 @@ async function downloadVideo() {
   } else {
     alert('Sharing is not supported in your browser.');
   }
+}
+
+async function downloadVideo() {
+  const link = document.createElement('a');
+  link.href = processedVideoURL;
+  link.download = 'The-Interview.mp4';
+  link.click();
 }
 
 function capitalizeFirstLetter(text) {

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NYTimes Interview Maker</title>
+  <title>NY Times Interview Maker</title>
   <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
   <div style="width: 80vw;">
-  <h1 style="text-align: center;">NYTimes Interview Maker</h1>
+  <h1 style="text-align: center;">NY Times Interview Maker</h1>
   <div style="text-align: center;">
     <a href="https://adnanaga.com" target="_blank" style="text-decoration: none; color: inherit;">By Adnan Aga</a>
   </div>
@@ -53,8 +53,11 @@
   <div id="video-container" style="display:none;">
     <video id="video-player" style="display:none;" controls width="640"></video>
     <video id="processed-video-player" autoplay loop muted playsinline ></video>
-    <button id="download-button" class="button">Download Video</button>
+    <div>
+      <button id="download-button" class="button">Download Video</button>
+      <button id="share-button" class="button">Share Video</button>
     </div>
+  </div>
 
 </div>
 
@@ -66,13 +69,6 @@
 <!-- FAQ Section (Hidden by default, expands smoothly) -->
 <div id="faq-content">
   <div class="faq-item">
-    <h3>Why?</h3>
-    <p>
-      I really liked the interview posts the New York Times made like 
-      <a href="https://www.instagram.com/p/C_6HEYSMM9I/?igsh=MWI2ODF5bTAwcWY5NA==" target="_blank">this one</a> 
-      and wanted to try and make a tool that could do that same, mostly as an excuse to build a website.
-    </p>  </div>
-
   <div class="faq-item">
     <h3>What if someone from The New York Times sees this?</h3>
     <p>That would be sick.</p>
