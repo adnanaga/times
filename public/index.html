@@ -20,26 +20,29 @@
   <div style="text-align: left;">Ever seen those moving, intimate, slo motion looking interview videos from the NYTimes?<br><br>The ones that look like this?</div>
   <br>
   <div style="text-align: center;">
-    <video autoplay loop muted playsinline style="width: 80vw;";>
+    <video autoplay loop muted playsinline class="timesVideo";>
       <source src="/images/interview-example.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
   <br>
-  <div>I wanted to make my own, but then ended up making a website.</div>
+  <div>I wanted to make my own, but then ended up making a website so other people could make them too.</div>
 
   <h2>Step 1</h2>
-  <div>Ideally here you go and record yourself using your phones slo mo feature in your camera doing something against a grey/white wall. Make small movements.
+  <div>Record yourself using your phones slo mo feature doing something against a grey/white wall. Make small movements.
     <br>
-    <br>You could also take a video right from the website but I can't do the cool slo mo like they do in that video up top.</div>
+    <br>You could also take a video when you click the button below but I can't do the cool slo mo like they do in that video up top.</div>
   <h2>Step 2</h2>
   <div>Let us know what your interview is about by typing it in the input box below.</div>
   <h2>Step 3</h2>
   <div>Hit process video and wait!</div>
+  <h1 style="text-align: center;">Make Your Own</h1>
+
 </div>
+
   <input type="file" id="video-input" accept="video/*" class="hidden ">
   <label for="video-input" class="button" id="file-button">Click here to upload your video</label>
-  <div id="info" style="text-align:center;">Then tell us what your interview is about
+  <div id="info">Then tell us what your interview is about
     <br>
     <br>
   <input type="text" id="custom-text" placeholder="Something like...Adnan Has A Tummy Ache" class="inputBox" maxlength="40">
@@ -51,8 +54,8 @@
             <p id="loading-text">Processing... it takes a little, just chill.</p>
           </div>
   <div id="video-container" style="display:none;">
-    <video id="video-player" style="display:none;" controls width="640"></video>
-    <video id="processed-video-player" autoplay loop muted playsinline ></video>
+    <video id="video-player" style="display:none;" controls></video>
+    <video id="processed-video-player" autoplay loop muted playsinline class="timesVideo" ></video>
     <div>
       <button id="download-button" class="button">Download Video</button>
       <button id="share-button" class="button">Share Video</button>
@@ -61,22 +64,22 @@
 
 </div>
 
- <!-- FAQ Toggle Button -->
+ <!-- FAQ Toggle Button
  <button class="faq-toggle" id="faq-toggle">
   FAQ <span class="arrow">▼</span>
 </button>
 
 <!-- FAQ Section (Hidden by default, expands smoothly) -->
-<div id="faq-content">
+<!-- <div id="faq-content"</div>>
   <div class="faq-item">
   <div class="faq-item">
-    <h3>What if someone from The New York Times sees this?</h3>
+    <h3>What if someone from The New York Times sees this? Aren</h3>
     <p>That would be sick.</p>
   </div>
 
   <div class="faq-item">
     <h3>How long did you spend making this?</h3>
-    <p>An embarrassingly long amount of time. Like so much time. <a href="https://github.com/ffmpegwasm/ffmpeg.wasm" target="_blank">ffmpeg.wasm</a> is so powerful but also so hard to use.</p>
+    <p>An embarrassingly long amount of time.<a href="https://github.com/ffmpegwasm/ffmpeg.wasm" target="_blank">ffmpeg.wasm</a> is so powerful but also so hard to use.</p>
   </div>
 
   <div class="faq-item">
@@ -85,7 +88,7 @@
       <a href="https://music.apple.com/us/album/eusexua/1767658574?i=1767658577" target="_blank">Eusexua by FKA Twigs</a> (thanks <a href="http://joshjoshjosh.net" target="_blank">Josh</a>)
     </p>
       </div>
-</div>
+</div> -->
   <!-- FFmpeg.js library -->
   <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.5/dist/ffmpeg.min.js"></script>
   <script src="/scripts/script.js"></script>
