@@ -62,7 +62,7 @@ async function processVideo() {
     await ffmpeg.load();
   }
 
-  const maxCharsPerLine = 18;
+  const maxCharsPerLine = 20;
   let customText = capitalizeFirstLetter(customTextInput.value);
 
 // Function to split text without breaking words

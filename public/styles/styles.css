@@ -24,6 +24,10 @@ html,body {
   font-weight: 700;
 }
 
+#bodyCopy {
+  font-size: 1rem;
+}
+
 .hidden {
   display: none;
 }
@@ -92,7 +96,7 @@ textarea, select, input {
   cursor: pointer;
   background-color: #FFFFFF;
   border: none;
-  font-size: 18px;
+  font-size: 1rem;
   width: 80vw;
   border-radius: 5px;
   padding: 0px;
