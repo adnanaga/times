@@ -40,20 +40,26 @@
 
 </div>
 <br>
-<h2 >Step 1</h2>
+<div id="step1">
+<h2>Step 1</h2>
 <div>Record yourself using your phones slo-mo camera doing something against a grey/white wall. Make small movements. Be cute, be demure.
 <br>
 <br>You can also take a video when you click the button below but then you can't do slo-mo like they do in that video up top.</div>
-  <input type="file" id="video-input" accept="video/*" class="hidden ">
+</div>  
+<input type="file" id="video-input" accept="video/*" class="hidden ">
   <label for="video-input" class="button" id="file-button">Click here to upload your video</label>
+  <div id="step2">
   <h2>Step 2</h2>
   <div id="info">Then tell us what your interview is about
     <br>
     <br>
+  </div>
   <input type="text" id="custom-text" placeholder="Something like...Adnan Has A Tummy Ache" class="inputBox" maxlength="40">
 </div>
+<div id="step3">
 <h2>Step 3</h2>
   <button id="process-button" class="button">Click here to finish your video</button>
+  </div>
           <!-- Add this progress bar -->
           <div id="loading-container" style="display: none;">
             <div class="spinner"></div>
@@ -63,7 +69,7 @@
     <video id="video-player" style="display:none;" controls></video>
     <video id="processed-video-player" autoplay loop muted playsinline class="timesVideo" ></video>
     <div>
-      <button id="download-button" class="button">Download Video</button>
+      <button id="download-button" class="button" style="display:none;">Download Video</button>
       <button id="share-button" class="button">Share Video</button>
     </div>
   </div>

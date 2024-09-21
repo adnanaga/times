@@ -19,6 +19,10 @@ const loadingText = document.getElementById('loading-text');
 const info = document.getElementById('info');
 const bodyCopy = document.getElementById('bodyCopy');
 
+const step1 = document.getElementById('step1');
+const step2 = document.getElementById('step2');
+const step3 = document.getElementById('step3');
+
 
 videoInput.addEventListener('change', handleFileUpload);
 processButton.addEventListener('click', processVideo);
@@ -97,6 +101,10 @@ console.log(ffmpegCommand);
   info.style.display = 'none';
   customTextInput.style.display = 'none';
   bodyCopy.style.display = 'none';
+
+  step1.style.display = 'none';
+  step2.style.display = 'none';
+  step3.style.display = 'none';
 
 // Show the spinner when the processing starts
 document.getElementById('loading-container').style.display = 'flex';
