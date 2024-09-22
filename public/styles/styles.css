@@ -166,7 +166,7 @@ textarea, select, input {
   }
 
   textarea, select, input {
-    width: 30vw;
+    width: 400px;
     font-weight: 300;
     height: 50px;
   }
