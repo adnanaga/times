@@ -193,8 +193,8 @@ function capitalizeFirstLetter(text) {
     .join(' '); // Join the array back into a single string
 }
 
-document.getElementById('faq-toggle').addEventListener('click', function() {
-  const faqContent = document.getElementById('faq-content');
-  faqContent.classList.toggle('open');
-  this.classList.toggle('open');
-});
+// document.getElementById('faq-toggle').addEventListener('click', function() {
+//   const faqContent = document.getElementById('faq-content');
+//   faqContent.classList.toggle('open');
+//   this.classList.toggle('open');
+// });
