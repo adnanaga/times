@@ -81,14 +81,16 @@ let ffmpegCommand;
 if (customText.length > maxCharsPerLine) {
   let [line1, line2] = splitTextAtWholeWord(customText, maxCharsPerLine);
 
+  let offset = 0;
+
   // Center-align each line and stack them vertically
-  ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=30:fontcolor=white:,
-  drawtext=fontfile=/cheltemham-300.ttf:text='${line1}':x=(w-text_w)/2:y=115:fontsize=65:fontcolor=white,
-                  drawtext=fontfile=/cheltemham-300.ttf:text='${line2}':x=(w-text_w)/2:y=188:fontsize=65:fontcolor=white`;
+  ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68+${offset}:fontsize=30:fontcolor=white:,
+  drawtext=fontfile=/cheltemham-300.ttf:text='${line1}':x=(w-text_w)/2:y=115+${offset}:fontsize=65:fontcolor=white,
+                  drawtext=fontfile=/cheltemham-300.ttf:text='${line2}':x=(w-text_w)/2:y=188+${offset}:fontsize=65:fontcolor=white`;
 } else {
   // Single-line text
-  ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68:fontsize=30:fontcolor=white:,
-        drawtext=fontfile=/cheltemham-300.ttf:text='${customText}':x=(w-text_w)/2:y=114:fontsize=65:fontcolor=white:`
+  ffmpegCommand = `drawtext=fontfile=/cheltemham-800.ttf:text='THE INTERVIEW':x=(w-text_w)/2:y=68+${offset}:fontsize=30:fontcolor=white:,
+        drawtext=fontfile=/cheltemham-300.ttf:text='${customText}':x=(w-text_w)/2:y=114+${offset}:fontsize=65:fontcolor=white:`
 }
 
 console.log(ffmpegCommand);
@@ -122,8 +124,8 @@ ffmpeg.setLogger(({ type, message }) => {
       '-i', 'input.mp4',
       '-t', '15',
       '-vf', `
-       crop=w='min(iw,ih)*0.75':h='min(iw,ih)',
-        scale=810:1080,
+       crop=w='min(iw,ih)':h='min(iw,ih)',
+        scale=810:810,
         setsar=1,
         hue=s=0,
        ${ffmpegCommand}
